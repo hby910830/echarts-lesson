@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>map</title>
+	<script src="../vendor/jquery.js"></script>
+	<script src="../vendor/echarts.js"></script>
+	<script src="../vendor/dark.js"></script>
+	<style type="text/css">
+		#app {
+			width: 1920px;
+			height: 800px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app"></div>
+
+	<script type="text/javascript">
+	$.getJSON('../json/guizhou.json', function(data){
+		echarts.registerMap('guizhou', data);
+		var chart = echarts.init(document.getElementById('app'));
+		chart.setOption({
+			series: [{
+				type: 'map',
+				map: 'guizhou',
+				title: '贵州地图', 
+				label: {
+					normal: {
+						show: true,
+					}
+				},
+				roam: true
+			}]
+		})
+	})
+	</script>
+</body>
+</html>
